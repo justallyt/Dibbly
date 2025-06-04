@@ -1,0 +1,87 @@
+.topbar{
+    height: 80px;
+    border-bottom: 1px solid var(--underline);
+    display: flex;
+    align-items: center;
+}
+.topbar-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topbar-content a h1{
+     font-weight: 300;
+     color: #111;
+     font-size: 32px;
+     letter-spacing: -1px;
+}
+
+.topbar-column-items{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.notification-item-wrap span.notify{
+     width: 40px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     height: 40px;
+     border-radius: 40px;
+     -webkit-border-radius: 40px;
+     -moz-border-radius: 40px;
+     -ms-border-radius: 40px;
+     -o-border-radius: 40px;
+     font-size: 20px;
+     cursor: pointer;
+}
+.notification-item-wrap span.notify:hover{
+     background: rgba(214, 235, 226, 0.45);
+}
+.profile-box-item{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.profile-image{
+       flex-shrink: 0;
+}
+.profile-image img{
+     width: 50px;
+     border-radius: 50px;
+     height: 50px;
+     -webkit-border-radius: 50px;
+     -moz-border-radius: 50px;
+     -ms-border-radius: 50px;
+     -o-border-radius: 50px;
+}
+
+.profile-box-item h4{
+     font-size: 14px;
+     font-weight: 400;
+     display: flex;
+     gap: 2px;
+     transition: all 0.5s ease;
+     padding: 10px;
+     border-radius: 7px;
+     -webkit-border-radius: 7px;
+     -moz-border-radius: 7px;
+     -ms-border-radius: 7px;
+     -o-border-radius: 7px;
+     cursor: pointer;
+     -webkit-transition: all 0.5s ease;
+     -moz-transition: all 0.5s ease;
+     -ms-transition: all 0.5s ease;
+     -o-transition: all 0.5s ease;
+}
+
+.profile-box-item h4:hover{
+    background: var(--underline);
+}
+
+.profile-box-item h4 span{
+    display: flex;
+    margin-top: 3px;
+}
