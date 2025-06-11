@@ -2,8 +2,10 @@ import { Link, NavLink } from "react-router-dom";
 import { PiBellLight } from "react-icons/pi";
 import profileImg from "../../../assets/profile.jpg"
 import { RxChevronDown } from "react-icons/rx";
+import { useSelector } from "react-redux"
 
 const Topbar = () => {
+  const { authInfo } = useSelector(state => state.auth)
   return (
     <div className="topbar">
              <div className="inner-row">
@@ -13,9 +15,9 @@ const Topbar = () => {
                                   </Link>
                                   <div className="topbar-nav">
                                           <ul>
-                                                <li><NavLink to={"/"}>Websites</NavLink></li>
-                                                <li><NavLink to={"/templates"}>Templates</NavLink></li>
-                                                <li><NavLink to={"/settings"}>Settings</NavLink></li>
+                                                <li><NavLink to={`/builder/${authInfo.id}/websites`}>Websites</NavLink></li>
+                                                <li><NavLink to={`/builder/${authInfo.id}/templates`}>Templates</NavLink></li>
+                                                <li><NavLink to={`/builder/${authInfo.id}/settings`}>Settings</NavLink></li>
                                           </ul>
                                   </div>
                                   <div className="topbar-column-items">

@@ -22,7 +22,7 @@ userSchema.pre("save", async function (next) {
       }
       const salt = await bcrypt.genSalt(10);
 
-      this.password = bcrypt.hash(this.password, salt);
+      this.password = await bcrypt.hash(this.password, salt);
 })
 
 //Hash password incase updated
@@ -30,14 +30,14 @@ userSchema.pre(["findByIdAndUpdate", "findOneAndUpdate"], async function(next){
        const data = this.getUpdate();
        const salt = await bcrypt.genSalt(10);
        if(data.password){
-              data.password = bcrypt.hash(data.password, salt);
+              data.password = await bcrypt.hash(data.password, salt);
        }
        next();
 })
 
 //Compare passwords
-userSchema.methods.matchPasswords = async function(passwordInput) {
-    return await bcrypt.compare(passwordInput, this.password);
+userSchema.methods.matchPasswords = async function(enteredPassword){
+       return await bcrypt.compare(enteredPassword, this.password);
 }
 
 const User = mongoose.model("User", userSchema);

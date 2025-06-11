@@ -1,5 +1,6 @@
 import asyncHandler from "express-async-handler";
 import User from "../models/userModel.js";
+import { generateUserToken } from "../utils/tokens.js";
 
 //Register user to the Database
 export const RegisterUser = asyncHandler(async(req, res) => {
@@ -29,5 +30,30 @@ export const RegisterUser = asyncHandler(async(req, res) => {
             res.status(500).json({
                     message: "Account creation failed. Please try again later"
             })
+      }
+})
+
+//Login user
+export const LoginUser = asyncHandler(async(req, res) => {
+      const { email, password } = req.body;
+
+      const user = await User.findOne({ email });
+
+      if(!user){
+             res.status(401)
+             throw new Error("Invalid account credentials. Please create an account")
+      }
+     
+      if(user && (await user.matchPasswords(password))){
+             generateUserToken(res, user._id);
+             res.status(201).json({
+                   message: "Login Successful",
+                   role: user.role.toLowerCase(),
+                   name: user.name,
+                   id: user._id
+             })
+      }else{
+            res.status(401);
+            throw new Error("Invalid credentials. Please try again with the correct ones.")
       }
 })
